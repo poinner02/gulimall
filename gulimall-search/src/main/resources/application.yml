@@ -1,0 +1,10 @@
+spring:
+  redis:
+    host: 192.168.182.130
+  session:
+    store-type: redis
+  thymeleaf:
+    cache: false
+logging:
+  level:
+    com.merchen.gulimall.search: debug

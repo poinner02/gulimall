@@ -1,0 +1,55 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://192.168.182.130:3306/gulimall_oms
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 192.168.182.130
+    port: 6379
+  session:   #分布式session
+    store-type: redis
+  thymeleaf:
+    cache: false
+#消息队列配置
+  rabbitmq:
+    host: 192.168.182.130
+    port: 5672
+    virtual-host: /
+    publisher-confirms: true #发布消息确认开启
+    publisher-returns: true
+    template:  #只要抵达队列，异步发送优先回调returnConfirm
+      mandatory: true
+    listener:
+      simple:
+        acknowledge-mode: manual  #手动ack确认接收消息
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  application:
+    name: gulimall-order
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto  #自增主键
+server:
+  port:  9000
+#线程池配置
+gulimall:
+  thread:
+    coreSize: 5
+    maxSize: 100
+    keepAliveTime: 60
+alipay:
+  app_id: 2021000119658929  #// 应用ID,您的APPID，收款账号既是您的APPID对应支付宝账号
+  # 商户私钥，您的PKCS8格式RSA2私钥
+  merchant_private_key: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCmedPThle5ISXXEVCGCI9M9TUmAdpW4j6e8U6ZWLXhnh5xbjwzH/FDXg4d5lAmop8WuxliIt9tYgmtdlbkXwHzF7MDc9e3NozDxbrAwj39R10JT6GW0LX+BzaR12M31BPt4sJRVlbxm3sgbbTuPHHlT9xRCOYG6UG3DBIeWM+q3IF9lMJ7QeECraKjHi+dLmejAa37HJ0ibwbcb5dfs81OlnEiAZJp+yOR5CgYlWSJ/fvRLoQtttO0MhN+q3D1Yyon5gstHqCjy69v/tpbnKWXTKw98p7ULlx5KtJIfKLWKZDumzM7qQW2vk3nz8xwEhtVjCce0lLPuWqdBDJABUEVAgMBAAECggEBAKItiuvFM455uWhkSMLacefx9X36Th9YNtMWl5CSOFX8eQHd9y2DD8GmTjBYn3qT8FHvoZHWET15RZ5D6/B8keSlENLrNpoYvVc3OHDyiftFW2BnwC6xUqqPklzPrKvFokicINumNfsXkgKMfbedEQPpIeObvKO89zUAwGHp+R0kM2MtY942FFLVAJottijm+DII5echLp15XAMPOxA3s6zQ64hmOYc7Vi53wL42eqQgASHxMZzWL/Ft5hZjOAyfkueKJX83sCoDY+Nw1cjKCrSOC3qohLHQYQvql/QCNpIdwdtYyLMOkTHH0iQcsPjoc2m22C6u+q6q/RceFeWX2R0CgYEA1N6K8qeUaFGAJoWohn1MiqMGzxxQxMk4i+edwN9GJ4+LrPlUKQY6jgp/AOGFsuN/H+eth/zlDPqPU6ZAZjcLTYBm71o24V5tXbMR4siOBVmdar/pBLawjGVG/tjhgVD0STCSnOPwfNebzFZij6F45hPkF4SyKB9T3l3xAtOIZnsCgYEAyDTfxRMNIxK2bDhIh61VE/LwpF5WOatocX/vhXObL6h/QD8DMA2PYRg8+ZvYMS5KMs6JiBbiq4lteGUrd1v1XHvBHtNeoSnKmx7R4W4pFHz0b2u2kEEFbgfzUelvtiKMQUc7M6DTJ3RMy/8hCmgUmwjIHnbEcnjpXz+9ZsRgqa8CgYAgiGJz82ibCNmtCYBYDY5FIeVIgetWJ+qcdymE8JqoMSgHp5NVMb6BNtlyKQVl8Z7cIWxD/EKFWUXOYvo0pPT1Q0p4CjGY//V2/IcfQcdyyd9lES9rqQASdOgEyuCsAtNS3DmMAMogSlNlR06I5QS1JRUXAxC3URJgSbsr02hlQQKBgGHx7B9/6IdmGjTrfCBUXjD6Q1xGgqyH/Pq5+jYxjpRMPKTzrt2NZL29m+cJpUS6PraIcKRRfecpvpKN/CvSo0DxklNAWSVDSsmE1G0S9an+T59K9O+xv7RK03EZYPub/z3YWVAyt9qvfPq4ADQVIy+NpkmxFP5jxNhCWKi0Hg4lAoGAKsjxi++bCyhN47LztWA1a3cfK4ANvVQpf2hPXJHNCI5/GzjFgYu123Juvet/ZB3JjPo0xcPz3y6kU+qoBt0gV2WeH15pClBHxZ5g5GEpVZIlp9EcDC3+f0qzsqiT4MVD/ShetelLqYs/qFaHtvo19O7LepeaNlCtw6DQ6tqISz4=
+  # 支付宝公钥,查看地址：https://openhome.alipay.com/platform/keyManage.htm 对应APPID下的支付宝公钥。
+  alipay_public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiZKAMc9VT8kZEj9yR4ec9mUBMoEKfTkqzyU26VzX5pUG7yZtWqIt/d3SDeYyRM4J97C3Rix14kNerlhgYMBhZyslnV4qnH4f3i9r1LY+KC/AjxkKIPSei0lqR5B8nLzt+fx0HTJxSFHblG7+b0rRNJkjPJ5WBKRwbnlo+hVsD8FiImy/KteA/5ViRzV2J+EIcsd4VyCuMfWz+Tb5RHyWI+VEIvFizQQSbbarTsLjmmQ3p81RCcoYcxhnmxQYIgqAAzzLuEwrWWkFkKcITHUoiNvSd82VpnkSg3uozG8VuqyfGyifcLoIbAM6AII9ti3bmETXxBRXLFQYTZyWYYWHOwIDAQAB
+  gatewayUrl: https://openapi.alipaydev.com/gateway.do #支付宝网关
+  projectUrl: http://j3env6.natappfree.cc  #内网穿透地址
+  returnUrl: http://member.gulimall.com/memberOrder.html
+  log_path: C:\\   #日志
+  timeout: 30m #支付宝自动关单

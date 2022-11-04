@@ -1,0 +1,20 @@
+package com.merchen.gulimall.product.dao;
+
+import com.merchen.gulimall.product.entity.CategoryBrandRelationEntity;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.PathVariable;
+
+/**
+ * 品牌分类关联
+ * 
+ * @author ChenZhongBo
+ * @email 961208477@qq.com
+ * @date 2022-06-04 20:05:18
+ */
+@Mapper
+public interface CategoryBrandRelationDao extends BaseMapper<CategoryBrandRelationEntity> {
+
+    void updateCateGoryDetails(@Param("cateId") Long catId, @Param("cateName") String name);
+}

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>恭喜秒杀成功订单号：[[${orderSn}]]</h1>
+    <h2>正在准备订单数据，10s以后跳转到支付页面<a th:href="'http://order.gulimall.com/payOrder?orderSn='+${orderSn}">去支付</a></h2>
+
+</body>
+</html>

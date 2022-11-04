@@ -1,0 +1,26 @@
+spring:
+  mvc:
+    date-format: yyyy-MM-dd hh:mm:ss
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://192.168.182.130:3306/gulimall_sms
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  application:
+    name: gulimall-coupon
+  redis:
+    host: 192.168.182.130
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto  #自增主键
+server:
+  port: 7000
+logging:
+  level:
+    com.merchen.gulimall: debug

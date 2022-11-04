@@ -1,0 +1,107 @@
+spring:
+  application:
+    name: gulimall-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      routes:
+        - id: order_route
+          uri: lb://gulimall-order
+          predicates:
+            - Path=/api/order/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /$\{segment}
+        #=========================第三方所有路由coupon_route=====================
+        - id: coupon_route #处理库存服务
+          uri: lb://gulimall-coupon
+          predicates:
+            - Path=/api/coupon/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /$\{segment}
+        #=========================第三方所有路由ware_route=====================
+        - id: ware_route #处理库存服务
+          uri: lb://gulimall-ware
+          predicates:
+            - Path=/api/ware/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /$\{segment}
+        #=========================第三方所有路由=====================
+        - id: third_party_route
+          uri: lb://gulimall-third-party
+          predicates:
+            - Path=/api/thirdparty/**
+          filters:
+            - RewritePath=/api/thirdparty/(?<segment>.*), /$\{segment}
+        #==========================以api开头的都是前端发请求==============
+        - id: product_route #处理商品服务,精确路由
+          uri: lb://gulimall-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
+     #===========================模糊路由=============================
+        - id: member_route
+          uri: lb://gulimall-member
+          predicates:
+            - Path=/api/member/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
+      #=============================================================
+        - id: renren_fast
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /renren-fast/$\{segment}
+      #==============================域名路由=================================
+        - id: gulimall_host_route
+          uri: lb://gulimall-product
+          predicates:
+            - Host=gulimall.com,item.gulimall.com
+      #==============================域名路由=================================
+        - id: gulimall_search_route
+          uri: lb://gulimall-search
+          predicates:
+            - Host=search.gulimall.com
+      #=============================权限认证路由===============================
+        - id: gulimall_auth_route
+          uri: lb://gulimall-auth-service
+          predicates:
+            - Host=auth.gulimall.com
+        #=============================域名路由===============================
+        - id: gulimall_cart_route
+          uri: lb://gulimall-cart-service
+          predicates:
+            - Host=cart.gulimall.com
+        #=============================域名路由===============================
+        - id: gulimall_order_route
+          uri: lb://gulimall-order
+          predicates:
+            - Host=order.gulimall.com
+        #=============================域名路由===============================
+        - id: gulimall_member_route
+          uri: lb://gulimall-member
+          predicates:
+            - Host=member.gulimall.com
+        #===============================秒杀路由
+        - id: gulimall_seckill_route
+          uri: lb://secskill-server
+          predicates:
+            - Host=seckill.gulimall.com
+
+server:
+  port: 88
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: test_route
+#          uri: https://www.baidu.com
+#          predicates:
+#            - Query=url,baidu
+#        - id: qq_route
+#          uri: https://www.qq.com
+#          predicates:
+#            - Query=url,qq

@@ -1,0 +1,18 @@
+server:
+  port: 8160
+spring:
+  application:
+    name: gulimall-weixin-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  redis:
+    host: 192.168.182.130
+    port: 6379
+  #开发环境设置false
+  thymeleaf:
+    cache: false
+  session:
+    store-type: redis
+
