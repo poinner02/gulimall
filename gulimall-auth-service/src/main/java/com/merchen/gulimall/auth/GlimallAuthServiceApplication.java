@@ -10,7 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 public class GlimallAuthServiceApplication {
-    //test git
+    //test git  2
 
     public static void main(String[] args) {
         SpringApplication.run(GlimallAuthServiceApplication.class, args);
