@@ -20,7 +20,7 @@ mybatis-plus:
     db-config:
       id-type: auto  #自增主键
 server:
-  port: 7000
+  port: 8080
 logging:
   level:
     com.merchen.gulimall: debug

@@ -12,7 +12,7 @@ spring:
       discovery:
         server-addr: localhost:8848
 server:
-  port: 40000
+  port: 8080
 
 gulimall:
   thread:

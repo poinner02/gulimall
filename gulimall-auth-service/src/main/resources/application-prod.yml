@@ -1,5 +1,5 @@
 server:
-  port: 20000
+  port: 8080
 spring:
   application:
     name: gulimall-auth-service

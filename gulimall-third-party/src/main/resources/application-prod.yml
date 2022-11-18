@@ -16,5 +16,5 @@ spring:
 application:
     name: gulimall-third-party
 server:
-  port: 30000
+  port: 8080
 

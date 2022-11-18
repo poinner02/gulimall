@@ -35,7 +35,7 @@ mybatis-plus:
     db-config:
       id-type: auto  #自增主键
 server:
-  port:  9000
+  port:  8080
 #线程池配置
 gulimall:
   thread:
