@@ -1,0 +1,21 @@
+
+spring:
+  redis:
+    host: 192.168.182.130
+    port: 6379
+  session:
+    store-type: redis
+  application:
+    name: gulimall-cart-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+server:
+  port: 40000
+
+gulimall:
+  thread:
+    coreSize: 10
+    maxSize: 100
+    keepAliveTime: 120
