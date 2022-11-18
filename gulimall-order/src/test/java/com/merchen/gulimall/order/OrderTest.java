@@ -1,25 +1,10 @@
 package com.merchen.gulimall.order;
 
-import com.alipay.api.domain.UboVO;
-import com.merchen.gulimall.order.dao.UndoLogDao;
-import com.merchen.gulimall.order.entity.OrderEntity;
-import com.merchen.gulimall.order.entity.OrderReturnApplyEntity;
-import com.merchen.gulimall.order.entity.OrderReturnReasonEntity;
-import com.merchen.gulimall.order.entity.UndoLog;
+
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.amqp.core.AmqpAdmin;
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.Date;
-import java.util.List;
 
 /**
  * @author MrChen
@@ -30,15 +15,7 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 public class OrderTest {
 
-    @Autowired
-    private UndoLogDao undoLogDao;
 
-    @Test
-    public  void test(){
-        Integer count = undoLogDao.selectCount(null);
-        System.out.println(count);
-
-    }
 
 //    @Autowired
 //    RabbitTemplate rabbitTemplate;
