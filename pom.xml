@@ -11,14 +11,21 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>gulimall-product</module>
+        <module>gulimall-auth-service</module>
+        <module>gulimall-cart-service</module>
+        <module>gulimall-common</module>
         <module>gulimall-coupon</module>
+        <module>gulimall-gateway</module>
         <module>gulimall-member</module>
         <module>gulimall-order</module>
+        <module>gulimall-product</module>
+        <module>gulimall-reduce-service</module>
+        <module>gulimall-search</module>
+        <module>gulimall-third-party</module>
         <module>gulimall-ware</module>
         <module>renren-fast</module>
         <module>renren-generator</module>
-        <module>gulimall-common</module>
+        <module>secskill-server</module>
     </modules>
 
 
