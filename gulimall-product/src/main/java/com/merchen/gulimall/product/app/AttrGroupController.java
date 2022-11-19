@@ -122,7 +122,6 @@ public class AttrGroupController {
     @RequestMapping("/update")
     public R update(@RequestBody AttrGroupEntity attrGroup){
 		attrGroupService.updateById(attrGroup);
-
         return R.ok();
     }
 

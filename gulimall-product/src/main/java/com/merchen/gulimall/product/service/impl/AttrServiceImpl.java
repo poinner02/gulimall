@@ -166,8 +166,10 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
         }
 
         //修改关联商品规格表
-        ProductAttrValueEntity entity = productAttrValueService.getOne(new QueryWrapper<ProductAttrValueEntity>().eq("attr_id", attrVO.getAttrId()));
-        if(entity == null){
+        //修复bug 查询商品销售属性 某个属性  其中某个属性名称是有多个值的
+//        老代码查询结果是多个 ProductAttrValueEntity entity = productAttrValueService.getOne(new QueryWrapper<ProductAttrValueEntity>().eq("attr_id", attrVO.getAttrId()));
+        List<ProductAttrValueEntity> productAttrValueEntityList = productAttrValueService.list(new QueryWrapper<ProductAttrValueEntity>().eq("attr_id", attrVO.getAttrId()));
+        if(productAttrValueEntityList == null || productAttrValueEntityList.size() == 0){
             //do noting
         }else{
             //修改

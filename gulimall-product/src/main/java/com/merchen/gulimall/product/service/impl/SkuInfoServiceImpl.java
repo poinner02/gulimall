@@ -70,6 +70,7 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
         baseMapper.insert(skuInfoEntity);
     }
 
+    //todo 查询条件不生效
     //http://localhost:88/api/product/skuinfo/list?t=1656339397441&page=1&limit=10&key=1&catelogId=225&brandId=7&min=4&max=13
     @Override
     public PageUtils queryPageOnCondiction(Map<String, Object> params) {
@@ -95,10 +96,16 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
                 wrapper.eq("brand_id", brand_id);
             }
         }
+        //修复bug 当查询条件价格区间为0~0时，默认是查询所有数据带分页条件
         if (!StringUtils.isEmpty(params.get("min")) && !StringUtils.isEmpty(params.get("max"))) {
             String min = (String) params.get("min");
             String max = (String) params.get("max");
-            wrapper.between("price", min, max);
+            if("0".equals(min) && "0".equals(max)){
+                //do nothing
+            }else{
+                //有则加上价格区间的条件
+                wrapper.between("price", min, max);
+            }
         }
         IPage<SkuInfoEntity> skuInfoEntityIPage = this.baseMapper.selectPage(page, wrapper);
         return new PageUtils(skuInfoEntityIPage);

@@ -48,29 +48,30 @@ public class OrderController {
         return R.ok().put("page", page);
     }
 
-    @GetMapping("/send/message")
-    public String sendMessage(){
-
-        for (int i = 0; i < 10; i++) {
-            if(i%2==0){
-                OrderReturnReasonEntity orderReturnReasonEntity = new OrderReturnReasonEntity();
-                orderReturnReasonEntity.setId(1L);
-                orderReturnReasonEntity.setCreateTime(new Date());
-                orderReturnReasonEntity.setSort(1);
-                orderReturnReasonEntity.setStatus(1);
-                orderReturnReasonEntity.setName("order-test:"+i);
-                rabbitTemplate.convertAndSend("hello-java-exchange",
-                        "hello.java",
-                        orderReturnReasonEntity,
-                        new CorrelationData(UUID.randomUUID().toString()));
-            }else{
-                OrderEntity orderEntity = new OrderEntity();
-                rabbitTemplate.convertAndSend("hello-java-exchange","hello.java",orderEntity);
-            }
-            log.info("send[{}]", "send success");
-        }
-        return "ok";
-    }
+    //测试队列用的
+//    @GetMapping("/send/message")
+//    public String sendMessage(){
+//
+//        for (int i = 0; i < 10; i++) {
+//            if(i%2==0){
+//                OrderReturnReasonEntity orderReturnReasonEntity = new OrderReturnReasonEntity();
+//                orderReturnReasonEntity.setId(1L);
+//                orderReturnReasonEntity.setCreateTime(new Date());
+//                orderReturnReasonEntity.setSort(1);
+//                orderReturnReasonEntity.setStatus(1);
+//                orderReturnReasonEntity.setName("order-test:"+i);
+//                rabbitTemplate.convertAndSend("hello-java-exchange",
+//                        "hello.java",
+//                        orderReturnReasonEntity,
+//                        new CorrelationData(UUID.randomUUID().toString()));
+//            }else{
+//                OrderEntity orderEntity = new OrderEntity();
+//                rabbitTemplate.convertAndSend("hello-java-exchange","hello.java",orderEntity);
+//            }
+//            log.info("send[{}]", "send success");
+//        }
+//        return "ok";
+//    }
 
     /**
      * 列表
