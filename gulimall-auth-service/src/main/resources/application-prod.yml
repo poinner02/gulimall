@@ -1,12 +1,12 @@
 server:
-  port: 8080
+  port: 20000
 spring:
   application:
     name: gulimall-auth-service
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: 192.168.182.130:8848
   redis:
     host: 192.168.182.130
     port: 6379

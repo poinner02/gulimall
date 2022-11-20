@@ -17,7 +17,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: 192.168.182.130:8848
   application:
     name: gulimall-ware
 mybatis-plus:

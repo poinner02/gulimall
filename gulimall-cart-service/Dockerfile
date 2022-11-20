@@ -1,5 +1,5 @@
 FROM java:8
-EXPOSE 8080
+EXPOSE 40000
 
 VOLUME /tmp
 ADD target/*.jar  /app.jar
